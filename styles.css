@@ -1,0 +1,35 @@
+
+.grid{
+    margin-left: auto ; 
+    margin-right: auto ; 
+    border: solid black 10px ; 
+    width: 1300px ; 
+    height: 610px ; 
+    background-color: green ; 
+}
+
+.scores{
+    display:flex ; 
+    flex-direction: row ;
+}
+
+#score1{
+    margin-right: 100px ; 
+}
+
+img{
+    width: 100px ;
+    height: 150px ; 
+}
+
+#turn{
+    margin-top: 100px ;
+    text-align: left;
+}
+
+.scores div:last-child{
+    margin-left: auto ; 
+}
+/* Aligning the 2nd score itms to the right even though it's in a flex container of a parent div 
+    https://stackoverflow.com/questions/35269947/how-can-i-align-one-item-right-with-flexbox */
+

@@ -1,0 +1,438 @@
+document.addEventListener('DOMContentLoaded', ()=>{
+    // card options
+    const cardArray = [
+        //DIAMONDS
+        {
+            name:'ace_of_diamonds',
+            img: 'src/images/ace_of_diamonds.png',
+            pairID: 1
+        },
+        {
+            name:'2_of_diamonds',
+            img: 'src/images/2_of_diamonds.png',
+            pairID: 2
+        },
+        {
+            name:'3_of_diamonds',
+            img: 'src/images/3_of_diamonds.png',
+            pairID: 3
+        },
+        {
+            name:'4_of_diamonds',
+            img: 'src/images/4_of_diamonds.png',
+            pairID: 4
+        },
+        {
+            name:'5_of_diamonds',
+            img: 'src/images/5_of_diamonds.png',
+            pairID: 5
+        },
+        {
+            name:'6_of_diamonds',
+            img: 'src/images/6_of_diamonds.png',
+            pairID: 6
+        },
+        {
+            name:'7_of_diamonds',
+            img: 'src/images/7_of_diamonds.png',
+            pairID: 7
+        },
+        {
+            name:'8_of_diamonds',
+            img: 'src/images/8_of_diamonds.png',
+            pairID: 8
+        },
+        {
+            name:'9_of_diamonds',
+            img: 'src/images/9_of_diamonds.png',
+            pairID: 9
+        },
+        {
+            name:'10_of_diamonds',
+            img: 'src/images/10_of_diamonds.png',
+            pairID: 10
+        },
+        {
+            name:'jack_of_diamonds',
+            img: 'src/images/jack_of_diamonds.png',
+            pairID: 11
+        },
+        {
+            name:'queen_of_diamonds',
+            img: 'src/images/queen_of_diamonds.png',
+            pairID: 12
+        },
+        {
+            name:'king_of_diamonds',
+            img: 'src/images/king_of_diamonds.png',
+            pairID: 13
+        },
+        // HEARTS
+        {
+            name:'ace_of_hearts',
+            img: 'src/images/ace_of_hearts.png',
+            pairID: 1
+        },
+        {
+            name:'2_of_hearts',
+            img: 'src/images/2_of_hearts.png',
+            pairID: 2
+        },
+        {
+            name:'3_of_hearts',
+            img: 'src/images/3_of_hearts.png',
+            pairID: 3
+        },
+        {
+            name:'4_of_hearts',
+            img: 'src/images/4_of_hearts.png',
+            pairID: 4
+        },
+        {
+            name:'5_of_hearts',
+            img: 'src/images/5_of_hearts.png',
+            pairID: 5
+        },
+        {
+            name:'6_of_hearts',
+            img: 'src/images/6_of_hearts.png',
+            pairID: 6
+        },
+        {
+            name:'7_of_hearts',
+            img: 'src/images/7_of_hearts.png',
+            pairID: 7
+        },
+        {
+            name:'8_of_hearts',
+            img: 'src/images/8_of_hearts.png',
+            pairID: 8
+        },
+        {
+            name:'9_of_hearts',
+            img: 'src/images/9_of_hearts.png',
+            pairID: 9
+        },
+        {
+            name:'10_of_hearts',
+            img: 'src/images/10_of_hearts.png',
+            pairID: 10
+        },
+        {
+            name:'jack_of_hearts',
+            img: 'src/images/jack_of_hearts.png',
+            pairID: 11
+        },
+        {
+            name:'queen_of_hearts',
+            img: 'src/images/queen_of_hearts.png',
+            pairID: 12
+        },
+        {
+            name:'king_of_hearts',
+            img: 'src/images/king_of_hearts.png',
+            pairID: 13
+        },
+        // CLUBS
+        {
+            name:'ace_of_clubs',
+            img: 'src/images/ace_of_clubs.png',
+            pairID: 14
+        },
+        {
+            name:'2_of_clubs',
+            img: 'src/images/2_of_clubs.png',
+            pairID: 15
+        },
+        {
+            name:'3_of_clubs',
+            img: 'src/images/3_of_clubs.png',
+            pairID: 16
+        },
+        {
+            name:'4_of_clubs',
+            img: 'src/images/4_of_clubs.png',
+            pairID: 17
+        },
+        {
+            name:'5_of_clubs',
+            img: 'src/images/5_of_clubs.png',
+            pairID: 18
+        },
+        {
+            name:'6_of_clubs',
+            img: 'src/images/6_of_clubs.png',
+            pairID: 19
+        },
+        {
+            name:'7_of_clubs',
+            img: 'src/images/7_of_clubs.png',
+            pairID: 20
+        },
+        {
+            name:'8_of_clubs',
+            img: 'src/images/8_of_clubs.png',
+            pairID: 21
+        },
+        {
+            name:'9_of_clubs',
+            img: 'src/images/9_of_clubs.png',
+            pairID: 22
+        },
+        {
+            name:'10_of_clubs',
+            img: 'src/images/10_of_clubs.png',
+            pairID: 23
+        },
+        {
+            name:'jack_of_clubs',
+            img: 'src/images/jack_of_clubs.png',
+            pairID: 24
+        },
+        {
+            name:'queen_of_clubs',
+            img: 'src/images/queen_of_clubs.png',
+            pairID: 25
+        },
+        {
+            name:'king_of_clubs',
+            img: 'src/images/king_of_clubs.png',
+            pairID: 26
+        },
+        // SPADES
+        {
+            name:'ace_of_spades',
+            img: 'src/images/ace_of_spades.png',
+            pairID: 14
+        },
+        {
+            name:'2_of_spades',
+            img: 'src/images/2_of_spades.png',
+            pairID: 15
+        },
+        {
+            name:'3_of_spades',
+            img: 'src/images/3_of_spades.png',
+            pairID: 16
+        },
+        {
+            name:'4_of_spades',
+            img: 'src/images/4_of_spades.png',
+            pairID: 17
+        },
+        {
+            name:'5_of_spades',
+            img: 'src/images/5_of_spades.png',
+            pairID: 18
+        },
+        {
+            name:'6_of_spades',
+            img: 'src/images/6_of_spades.png',
+            pairID: 19
+        },
+        {
+            name:'7_of_spades',
+            img: 'src/images/7_of_spades.png',
+            pairID: 20
+        },
+        {
+            name:'8_of_spades',
+            img: 'src/images/8_of_spades.png',
+            pairID: 21
+        },
+        {
+            name:'9_of_spades',
+            img: 'src/images/9_of_spades.png',
+            pairID: 22
+        },
+        {
+            name:'10_of_spades',
+            img: 'src/images/10_of_spades.png',
+            pairID: 23
+        },
+        {
+            name:'jack_of_spades',
+            img: 'src/images/jack_of_spades.png',
+            pairID: 24
+        },
+        {
+            name:'queen_of_spades',
+            img: 'src/images/queen_of_spades.png',
+            pairID: 25
+        },
+        {
+            name:'king_of_spades',
+            img: 'src/images/king_of_spades.png',
+            pairID: 26
+        },
+        // BELOW Arrays - shouldn't need to rearrange
+        // BACK OF CARDS
+        // {
+        //     name:'back_of_card',
+        //     img:'src/images/blank.png',
+        //     pairID: 0
+        // },
+        // // ALREADY PAIRED CARD - CANNOT SELECT AGAIN
+        // {
+        //     name:'paired_card',
+        //     img:'src/images/white.png',
+        //     pairID: 0
+        // }
+    ]
+
+    console.log(cardArray)
+    cardArray.sort(()=> 0.5-Math.random())
+    // Math.random returns a random number between 0 and 1
+    // If that random is < 0.5 (negative number)
+    // If random number is > 0.5 (positive number)
+    // You're sorting the cards based on a random number
+
+    // Put our cards into the grid
+    // Use query selector for this
+    const grid = document.querySelector('.grid')
+    let cardsChosen = [] // only allow 2 elements at a time - to compare pairs of cards chosen
+    let cardsChosenIDs = []
+    let cardsChosenPairIDs = []
+    let playerTurn = 0 
+    // count = (count+1) % 2 -> toggles between 1 and 0
+    let player1Score = 0
+    let player2Score = 0
+    let player1CardsWon = []
+    let player2CardsWon = []
+    let resultDisplay1 = document.querySelector('#score1')
+    let resultDisplay2 = document.querySelector('#score2')
+
+    let turnToggle = document.getElementById('turn')
+    function turnOfPlayer(){
+        if (playerTurn===0){
+            turnToggle.innerHTML="Player 1 turn"
+        }
+        else{
+            turnToggle.innerHTML="Player 2 turn"
+        }
+    }
+
+    function increasePlayerScore(){
+        if (playerTurn==0){
+            player1Score+=1
+        }
+        else{
+            player2Score+=1
+        }
+    }
+
+    
+    
+
+    function createBoard(){
+        for (let i=0 ; i< cardArray.length; i++){
+            // Create the card
+            const card = document.createElement('img')
+           // set attributes of the card
+            card.setAttribute('src','src/images/blank.png')
+            card.setAttribute('data-id',i)
+            card.setAttribute('pairID',cardArray[i].pairID)
+            // LISTEN out for clicks on the card
+            card.addEventListener('click', flipCard)
+            // PUT Card into our grid
+            grid.appendChild(card)
+        }
+    }
+    function flipCard(){
+        let cardID = this.getAttribute('data-id')
+        cardsChosen.push(cardArray[cardID])
+        cardsChosenIDs.push(cardID)
+        cardsChosenPairIDs.push(cardArray[cardID].pairID)
+
+        console.log(cardArray[cardID])
+        console.log(cardsChosen)
+        // we only want to compare 2 cards at a time
+        // if they don't match, clear the cards chosen array
+        // and start again
+        // Each time you clear, specify the turn of player
+        // e.g. Player 1 turn ; Player 2 turn
+        this.setAttribute('src',cardArray[cardID].img)
+        if (cardsChosen.length === 2){
+            setTimeout(checkForMatch, 1000) // originally set to 500 -> 500 milliseconds
+            // invokes a function after a certain amount of time has passed
+            // check if those 2 cards match with the pair ID
+            // if they match, take them off the board
+            // if they don't match, flip the card back over
+        }
+        console.log(cardsChosenIDs)
+        console.log(cardsChosenPairIDs)
+
+    }
+
+    function increaseScoreOfCertainPlayer(){
+        if (playerTurn==0){
+            player1Score+=1
+            resultDisplay1.textContent=player1CardsWon.length
+        }
+        else {
+            //playerTurn would be 0 or 1
+            player2Score+=1
+            resultDisplay2.textContent=player2CardsWon.length
+        }
+        if (player1CardsWon.length+player2CardsWon.length === (cardArray.length/2)-1){  // when pairs of cards Won total == 25
+            checkForWinner()
+        }
+    }
+
+    function checkForWinner(){
+        if (player1CardsWon.length>player2CardsWon.length){
+            alert('Player 1 has won')
+        }
+        else {
+            alert ('Player 2 has won')
+        }
+    }
+
+    function checkForMatch(){
+        const cards = document.querySelectorAll('img')
+        const optionOneId = cardsChosenIDs[0]
+        const optionTwoId = cardsChosenIDs[1]
+
+        if(optionOneId == optionTwoId)
+        {
+            alert('You have picked the same image!')
+            cards[optionOneId].setAttribute('src','src/images/blank.png')
+            cards[optionTwoId].setAttribute('src','src/images/blank.png')
+        }
+
+        // check if we have a match
+        else if (cardsChosenPairIDs[0]===cardsChosenPairIDs[1]){
+            alert('You have found a match !')
+            
+            
+            cards[optionOneId].setAttribute('src','src/images/white.png')
+            cards[optionTwoId].setAttribute('src','src/images/white.png')
+            cards[optionOneId].removeEventListener('click',flipCard)
+            cards[optionTwoId].removeEventListener('click',flipCard)
+            
+            if (playerTurn==0){
+                player1CardsWon.push(cardsChosen)
+            }
+            else{
+                player2CardsWon.push(cardsChosen)
+            }
+            increaseScoreOfCertainPlayer()
+        }
+
+        // what happens if you don't find a match
+        // for testing purposes, comment this out to test if the game really completes properly when a winner is found
+        else {
+            cards[optionOneId].setAttribute('src','src/images/blank.png')
+            cards[optionTwoId].setAttribute('src','src/images/blank.png')
+        }
+
+        playerTurn=(playerTurn+1)%2
+        cardsChosen=[]
+        cardsChosenIDs =[]
+        cardsChosenPairIDs = []
+        turnOfPlayer()
+    }
+
+    createBoard()
+    turnOfPlayer()
+})
