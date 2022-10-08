@@ -430,7 +430,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
             player2Score+=1
             resultDisplay2.textContent=player2CardsWon.length
         }
+        console.log("player1 cards won: "+ player1CardsWon)
+        console.log("player2 cards won: "+ player2CardsWon)
         if (player1CardsWon.length+player2CardsWon.length === (cardArray.length/2)-1){  // when pairs of cards Won total == 25
+            console.log('(cardArray.length/2)-1 equals: '+ ((cardArray.length/2)-1).toString)
             checkForWinner()
         }
     }
@@ -441,6 +444,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }
         else {
             alert ('Player 2 has won')
+        }
+        // Don't allow the remaining 2 cards to be clicked on 
+        for (let i=0; i<cards.length;i++){
+            cards[i].removeEventListener('click', flipCard)
         }
     }
 
