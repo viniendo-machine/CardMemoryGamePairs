@@ -486,10 +486,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
         cardsChosen=[]    
         for (let j=0 ; j<cards.length ; j++){
             // only add the event listener if cardsChosen = []
-            if(cards[j].getAttribute('src')!=='src/images/blank.png' || cards[j].getAttribute('src')!=='src/images/white.png' ){
-                    console.log('Allow the remaining cards to be selected again')
-                    cards[j].addEventListener('click',flipCard)
-            }
+            console.log(cards[j].getAttribute('src'))
+            // if(cards[j].getAttribute('src')!=='src/images/blank.png' || cards[j].getAttribute('src')!=='src/images/white.png' ){
+            //         cards[j].addEventListener('click',flipCard) // atm the bug is that paired cards are allowed to be selected again :/ 
+            //         // only cards that aren't 
+            // }
+            if(cards[j].getAttribute('src')==='src/images/blank.png'){
+                cards[j].addEventListener('click',flipCard) // atm the bug is that paired cards are allowed to be selected again :/ 
+                // only cards that aren't 
+        }
         }
         cardsChosenIDs =[]
         cardsChosenPairIDs = []
