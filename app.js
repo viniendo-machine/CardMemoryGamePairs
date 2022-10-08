@@ -439,6 +439,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
 
     function checkForWinner(){
+        const cards = document.querySelectorAll('img')
         if (player1CardsWon.length>player2CardsWon.length){
             alert('Player 1 has won')
         }
