@@ -365,7 +365,20 @@ document.addEventListener('DOMContentLoaded', ()=>{
                     }
                 }    
             }
+            // still trying to figure the bug when the same card is clicked many times, to be able to select a second card
+            console.log(cardsChosen)
             if (cardsChosen[0]===cardsChosen[1]){
+                console.log('Same card selected')
+                // Added these two line
+
+                for (let j=0 ; j<cards.length ; j++){
+                    // only add the event listener if cardsChosen = []
+                    if(cards[j].getAttribute('src')!=='src/images/blank.png' || cards[j].getAttribute('src')!=='src/images/white.png' ){
+                            console.log('Allow the remaining cards to be selected again')
+                            cards[j].addEventListener('click',flipCard)
+                    }
+                }
+                cards[cardsChosenIDs[0]].removeEventListener('click',flipCard)
                 cardsChosen.pop()
                 cardsChosenIDs.pop()
                 cardsChosenPairIDs.pop()
