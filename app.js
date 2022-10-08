@@ -300,15 +300,39 @@ document.addEventListener('DOMContentLoaded', ()=>{
     let player1CardsWon = []
     let player2CardsWon = []
     let resultDisplay1 = document.querySelector('#score1')
+    resultDisplay1.textContent = 0 ;
     let resultDisplay2 = document.querySelector('#score2')
+    resultDisplay2.textContent = 0 ;
 
     let turnToggle = document.getElementById('turn')
     function turnOfPlayer(){
-        if (playerTurn===0){
-            turnToggle.innerHTML="Player 1 turn"
+        const player1Score = document.getElementById('player-1')
+        const player2Score = document.getElementById('player-2')
+
+        // Processing input -> Still need a bug for player 1 and player 2 score
+        if (player1Score.value===""){
+            player1Score.setAttribute('value', player1Score.getAttribute('placeholder'))
         }
         else{
-            turnToggle.innerHTML="Player 2 turn"
+            player1Score.setAttribute('value', player1Score.value)
+        }
+        if (player2Score.value===""){
+            player2Score.setAttribute('value', player2Score.getAttribute('placeholder'))
+        }
+        else{
+            player2Score.setAttribute('value', player2Score.value)
+        }
+
+        if (playerTurn===0){
+            turnToggle.innerHTML=player1Score.getAttribute('value')+ "'s turn"
+            // turnToggle.innerHTML="Player 1 turn"
+            turnToggle.style = "float: left"
+        }
+        else{
+            turnToggle.innerHTML=player2Score.getAttribute('value')+ "'s turn"
+            // turnToggle.innerHTML="Player 2 turn"
+            turnToggle.style = "float: right"
+
         }
     }
 
