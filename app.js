@@ -353,11 +353,30 @@ document.addEventListener('DOMContentLoaded', ()=>{
         // e.g. Player 1 turn ; Player 2 turn
         this.setAttribute('src',cardArray[cardID].img)
         if (cardsChosen.length === 2){
-            setTimeout(checkForMatch, 1000) // originally set to 500 -> 500 milliseconds
+            // doesn't allow the other player to click on cards yet (remove eventListener), while the other player is selecting 2 cards -> until those 2 cards have vanished or are matched up and blanked out
+            // only after the 2 cards have gone back to being flipped back over can you allow the remaining cards not paired yet to be selected
+            const cards = document.querySelectorAll('img')
+            for (let i=0 ; i<cardsChosenIDs.length; i++){
+                // cannot select other cards in this timeframe
+                console.log('Cannot select other cards for the timebeing')
+                for (let j=0 ; j<cards.length ; j++){
+                    if(cards[j].getAttribute('data-id')!=i){
+                        cards[j].removeEventListener('click',flipCard)
+                    }
+                }    
+            }
+            if (cardsChosen[0]===cardsChosen[1]){
+                cardsChosen.pop()
+                cardsChosenIDs.pop()
+                cardsChosenPairIDs.pop()
+            }
+            else {
+                setTimeout(checkForMatch, 2500) // originally set to 500 -> 500 milliseconds    
             // invokes a function after a certain amount of time has passed
             // check if those 2 cards match with the pair ID
             // if they match, take them off the board
             // if they don't match, flip the card back over
+            }
         }
         console.log(cardsChosenIDs)
         console.log(cardsChosenPairIDs)
@@ -393,15 +412,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
         const optionOneId = cardsChosenIDs[0]
         const optionTwoId = cardsChosenIDs[1]
 
-        if(optionOneId == optionTwoId)
-        {
-            alert('You have picked the same image!')
-            cards[optionOneId].setAttribute('src','src/images/blank.png')
-            cards[optionTwoId].setAttribute('src','src/images/blank.png')
-        }
+        // if(optionOneId == optionTwoId)
+        // {
+        //     alert('You have picked the same image!')
+        //     cards[optionOneId].setAttribute('src','src/images/blank.png')
+        //     cards[optionTwoId].setAttribute('src','src/images/blank.png')
+        // }
 
         // check if we have a match
-        else if (cardsChosenPairIDs[0]===cardsChosenPairIDs[1]){
+        if (cardsChosenPairIDs[0]===cardsChosenPairIDs[1]){
             alert('You have found a match !')
             
             
@@ -427,7 +446,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }
 
         playerTurn=(playerTurn+1)%2
-        cardsChosen=[]
+        cardsChosen=[]    
+        for (let j=0 ; j<cards.length ; j++){
+            // only add the event listener if cardsChosen = []
+            if(cards[j].getAttribute('src')!=='src/images/blank.png' || cards[j].getAttribute('src')!=='src/images/white.png' ){
+                    console.log('Allow the remaining cards to be selected again')
+                    cards[j].addEventListener('click',flipCard)
+            }
+        }
         cardsChosenIDs =[]
         cardsChosenPairIDs = []
         turnOfPlayer()
